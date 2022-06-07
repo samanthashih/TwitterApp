@@ -12,15 +12,16 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_margin="20dp"
-        android:onClick="logoutToRest"
+        android:onClick="onLogoutButton"
         android:text="@string/logout_label" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvTweets"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@+id/btLogout"
         android:layout_marginStart="0dp"
-        android:layout_marginTop="-68dp"
+        android:layout_marginTop="10dp"
         app:layout_constraintTop_toBottomOf="@id/btLogout" />
 
 </RelativeLayout>
