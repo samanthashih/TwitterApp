@@ -58,9 +58,12 @@ public class TimelineActivity extends AppCompatActivity {
     }
 
     @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) { // item = the menu item icon, when click on menu item
-        if (item.getItemId() == R.id.compose) {
-            Toast.makeText(this, "Compose!", Toast.LENGTH_SHORT).show(); //toast is pop up msg
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) { // item = the menu item icon, when click on menu item which is the make a tweet button
+        if (item.getItemId() == R.id.compose) { // if make tweet icon selected
+            //Toast.makeText(this, "Compose!", Toast.LENGTH_SHORT).show(); //toast is pop up msg
+            // navigate to compose activity
+            Intent intent = new Intent(this, ComposeActivity.class); //coming from timelineactivity and going to composeactivity
+            startActivity(intent);
         }
         return true; //return true to consume click of item
     }
