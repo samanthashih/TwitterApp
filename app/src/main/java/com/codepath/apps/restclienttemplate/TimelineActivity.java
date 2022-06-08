@@ -1,5 +1,6 @@
 package com.codepath.apps.restclienttemplate;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -7,7 +8,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.codepath.apps.restclienttemplate.models.Tweet;
 import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler;
@@ -46,6 +50,23 @@ public class TimelineActivity extends AppCompatActivity {
         populateHomeTimeline();
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        //inflate the menu -- adds items to action bar
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true; //return true to show menu
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) { // item = the menu item icon, when click on menu item
+        if (item.getItemId() == R.id.compose) {
+            Toast.makeText(this, "Compose!", Toast.LENGTH_SHORT).show(); //toast is pop up msg
+        }
+        return true; //return true to consume click of item
+    }
+
+
+
     private void populateHomeTimeline() {
         client.getHomeTimeline(new JsonHttpResponseHandler() {
             @Override
@@ -77,6 +98,9 @@ public class TimelineActivity extends AppCompatActivity {
         i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); // this makes sure the Back button won't work
         i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK); // same as above
         startActivity(i);
-        // finish(); -- another way: just need this one line to log out 
+
+        // finish(); -- i think another way: just need this one line to log out
+        // bc it finishes the timeline activity and then goes back to login activity
+        // (bc we went from login activity --> timeline actvity)
     }
 }
