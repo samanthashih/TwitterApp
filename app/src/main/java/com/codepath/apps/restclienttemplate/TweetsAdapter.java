@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -95,7 +96,7 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
             // take out diff attributes from tweet and use attr to fill out the itemviews
             tvBody.setText(tweet.body);
             tvName.setText(tweet.user.name);
-            tvScreenName.setText("@"+tweet.user.screenName);
+            tvScreenName.setText(context.getString(R.string.at)+tweet.user.screenName);
 
             // set profile img using glide
             Glide.with(context).load(tweet.user.profileImageUrl).transform(new RoundedCorners(100)).into(ivProfileImage);
@@ -133,7 +134,7 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
                 if (diff < MINUTE_MILLIS) {
                     return "just now";
                 } else if (diff < 2 * MINUTE_MILLIS) {
-                    return "a minute ago";
+                    return "1m";
                 } else if (diff < 50 * MINUTE_MILLIS) {
                     return diff / MINUTE_MILLIS + "m";
                 } else if (diff < 90 * MINUTE_MILLIS) {
