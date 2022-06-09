@@ -50,11 +50,12 @@ public class TimelineActivity extends AppCompatActivity {
         tweets = new ArrayList<>();
         adapter = new TweetsAdapter(this, tweets);
         // step 3 = configure recycler view - layout manager + adapter
-        rvTweets.setLayoutManager(new LinearLayoutManager(this)); //set layout manager on rv class
+        rvTweets.setLayoutManager(linearLayoutManager); //set layout manager on rv class
         rvTweets.setAdapter(adapter);
         populateHomeTimeline();
 
         scrollListener = new EndlessRecyclerViewScrollListener(linearLayoutManager) {
+            // Adds the scroll listener to RecyclerView
             @Override
             public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
                 Log.i("endless", "start endless scroll");
@@ -96,7 +97,7 @@ public class TimelineActivity extends AppCompatActivity {
         //  --> Append the new data objects to the existing set of items inside the array of items
         //  --> Notify the adapter of the new items made with `notifyItemRangeInserted()`
 
-        int last_id = tweets.get(tweets.size()-1).id;
+        long last_id = tweets.get(tweets.size()-1).id;
 
         client.getPage(new JsonHttpResponseHandler() {
             @Override

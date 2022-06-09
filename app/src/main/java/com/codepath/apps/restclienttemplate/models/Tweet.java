@@ -18,7 +18,7 @@ public class Tweet {
     public String mediaImageUrl;
     public int retweetCount;
 //    public int likeCount;
-    public int id;
+    public long id;
 
     public Tweet() {} // empty constructor needed for parcel library
 
@@ -30,7 +30,7 @@ public class Tweet {
         tweet.mediaImageUrl=getEntity(jsonObject.getJSONObject("entities"));
         tweet.retweetCount = jsonObject.getInt("retweet_count");
 //        tweet.likeCount = jsonObject.getInt("favorite_count");
-        tweet.id = jsonObject.getInt("id");
+        tweet.id = jsonObject.getLong("id");
         return tweet;
     }
 
