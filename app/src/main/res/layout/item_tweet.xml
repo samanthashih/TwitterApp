@@ -14,13 +14,24 @@
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
-        android:id="@+id/tvScreenName"
+        android:id="@+id/tvName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
         android:layout_marginTop="0dp"
         android:layout_toEndOf="@+id/ivProfile"
-        android:text="itssamshih" />
+        android:text="sam!!!"
+        android:textStyle="bold"
+        android:textColor="#000000"/>
+
+    <TextView
+        android:id="@+id/tvScreenName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="7dp"
+        android:layout_marginTop="0dp"
+        android:layout_toEndOf="@+id/tvName"
+        android:text="\@itssamshih" />
 
     <TextView
         android:id="@+id/tvBody"
@@ -31,4 +42,26 @@
         android:layout_marginTop="2dp"
         android:layout_toEndOf="@+id/ivProfile"
         android:text="this is my tweet!!!" />
+
+    <ImageView
+        android:id="@+id/ivMedia"
+        android:layout_width="wrap_content"
+        android:layout_height="150dp"
+        android:layout_below="@id/tvBody"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_toEndOf="@+id/ivProfile"
+        tools:srcCompat="@tools:sample/backgrounds/scenic"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/tvTimestamp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/tvBody"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="2dp"
+        android:text="9h"
+        tools:layout_marginEnd="10dp" />
+
 </RelativeLayout>

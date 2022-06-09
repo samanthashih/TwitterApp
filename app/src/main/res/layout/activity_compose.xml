@@ -6,17 +6,25 @@
     android:layout_height="match_parent"
     tools:context=".ComposeActivity">
 
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:counterEnabled="true"
+        app:counterMaxLength="140">
+
     <EditText
         android:id="@+id/etCompose"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
         android:gravity="start|top"
+        android:hint="@string/what_s_happening"
         android:inputType="textMultiLine"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="5dp"
         android:minLines="5"
-        android:hint="@string/what_s_happening"/>
+        tools:layout_editor_absoluteX="5dp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
 
     <Button
         android:id="@+id/btnTweet"
