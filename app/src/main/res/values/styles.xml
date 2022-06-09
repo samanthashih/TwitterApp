@@ -1,7 +1,7 @@
 <resources>
 
     <style name="AppBaseTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <item name="colorPrimary">#1DA1F2</item>
+        <item name="colorPrimary">#1e9af0</item>
         <!--
             Theme customizations available in newer API levels can go in
             res/values-vXX/styles.xml, while customizations related to
