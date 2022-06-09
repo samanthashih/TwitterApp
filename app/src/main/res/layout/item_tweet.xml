@@ -22,7 +22,7 @@
         android:layout_toEndOf="@+id/ivProfile"
         android:ellipsize="end"
         android:text="sam!!!"
-        android:textColor="#000000"
+        android:textColor="#14171A"
         android:textStyle="bold" />
 
     <TextView
@@ -32,6 +32,7 @@
         android:layout_marginStart="7dp"
         android:layout_marginTop="0dp"
         android:layout_toEndOf="@+id/tvName"
+        android:textColor="#657786"
         android:text="\@itssamshih" />
 
     <TextView
@@ -41,6 +42,7 @@
         android:layout_below="@+id/tvScreenName"
         android:layout_marginStart="5dp"
         android:layout_marginTop="2dp"
+        android:textColor="#14171A"
         android:layout_toEndOf="@+id/ivProfile"
         android:text="this is my tweet!!!" />
 
@@ -83,6 +85,19 @@
         android:src="@drawable/vector_compose_dm_shortcut"
         app:fabCustomSize="15dp"
         app:maxImageSize="15dp" />
+
+    <TextView
+        android:id="@+id/tvReplyCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvBody"
+        android:layout_alignBottom="@+id/fabReply"
+        android:layout_marginStart="-13dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginBottom="-4dp"
+        android:textSize="12dp"
+        android:layout_toEndOf="@+id/fabReply"
+        android:text="10" />
 
 
 </RelativeLayout>

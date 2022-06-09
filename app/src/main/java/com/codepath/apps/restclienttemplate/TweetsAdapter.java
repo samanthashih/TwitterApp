@@ -79,6 +79,7 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
         ImageView ivMedia;
         TextView tvTimestamp;
         TextView tvName;
+        TextView tvReplyCount;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -89,6 +90,7 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
             tvScreenName = itemView.findViewById(R.id.tvScreenName);
             ivMedia = itemView.findViewById(R.id.ivMedia);
             tvTimestamp = itemView.findViewById(R.id.tvTimestamp);
+            tvReplyCount = itemView.findViewById(R.id.tvReplyCount);
         }
 
         //creating our own bind method to bind a tweet to view holder
@@ -112,6 +114,7 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
             }
 
             tvTimestamp.setText(getRelativeTimeAgo(tweet.createdAt));
+            tvReplyCount.setText(""+tweet.retweetCount);
         }
 
         // stretch - adding timestamp

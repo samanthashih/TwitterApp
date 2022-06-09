@@ -16,6 +16,9 @@ public class Tweet {
     public String createdAt;
     public User user; // user model in tweet model so user also needs to be parcelable
     public String mediaImageUrl;
+    public int retweetCount;
+//    public int likeCount;
+    public int id;
 
     public Tweet() {} // empty constructor needed for parcel library
 
@@ -25,6 +28,9 @@ public class Tweet {
         tweet.createdAt = jsonObject.getString("created_at");
         tweet.user = User.fromJson( jsonObject.getJSONObject("user") );
         tweet.mediaImageUrl=getEntity(jsonObject.getJSONObject("entities"));
+        tweet.retweetCount = jsonObject.getInt("retweet_count");
+//        tweet.likeCount = jsonObject.getInt("favorite_count");
+        tweet.id = jsonObject.getInt("id");
         return tweet;
     }
 
