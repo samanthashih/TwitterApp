@@ -224,11 +224,15 @@ public class TimelineActivity extends AppCompatActivity {
         });
     }
 
-    public void replyToTweet(View view) {
-        TextView tvScreenName = view.findViewById(R.id.tvScreenName);
-        Intent i = new Intent(this, ComposeActivity.class);
-        i.putExtra("replyTo", tvScreenName.toString());
-        startActivity(i);
+    public boolean replyToTweet(View view) {
+        Intent intent = new Intent(this, ComposeActivity.class); //coming from timelineactivity and going to composeactivity
+        startActivity(intent);
+        return true; //return true to consume click of item
+
+        //i was trying to send username but it didn't work
+//        TextView tvScreenName = view.findViewById(R.id.tvScreenName);
+//        i.putExtra(this.getString(R.string.tweetParcelKey), tvScreenName.toString());
+//        startActivity(i);
     }
 
 }
