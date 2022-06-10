@@ -39,6 +39,9 @@
                     android:scheme="@string/intent_scheme" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".TweetDetailActivity"
+            android:exported="false" />
     </application>
 
 </manifest>

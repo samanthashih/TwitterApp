@@ -17,7 +17,7 @@ public class Tweet {
     public User user; // user model in tweet model so user also needs to be parcelable
     public String mediaImageUrl;
     public int retweetCount;
-//    public int likeCount;
+    public int likeCount;
     public long id;
 
     public Tweet() {} // empty constructor needed for parcel library
@@ -29,7 +29,7 @@ public class Tweet {
         tweet.user = User.fromJson( jsonObject.getJSONObject("user") );
         tweet.mediaImageUrl=getEntity(jsonObject.getJSONObject("entities"));
         tweet.retweetCount = jsonObject.getInt("retweet_count");
-//        tweet.likeCount = jsonObject.getInt("favorite_count");
+        tweet.likeCount = jsonObject.getInt("favorite_count");
         tweet.id = jsonObject.getLong("id");
         return tweet;
     }
@@ -40,7 +40,7 @@ public class Tweet {
         if (allMedia != null) {
             url =  allMedia.getJSONObject(0).getString("media_url_https");
         }
-        Log.d("Tweet", url);
+//        Log.d("Tweet", url);
         return url;
     }
 

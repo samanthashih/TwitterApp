@@ -157,6 +157,20 @@ public class TimelineActivity extends AppCompatActivity {
             Intent intent = new Intent(this, ComposeActivity.class); //coming from timelineactivity and going to composeactivity
             startActivityForResult(intent, REQUEST_CODE);
             return true; //return true to consume click of item
+        } else if (item.getItemId() == R.id.logout) {
+            Log.i("logout test", "loggedout");
+            // forget who's logged in
+            TwitterApp.getRestClient(this).clearAccessToken();
+            // navigate backwards to Login screen
+            Intent i = new Intent(this, LoginActivity.class);
+            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); // this makes sure the Back button won't work
+            i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK); // same as above
+            startActivityForResult(i, REQUEST_CODE);
+
+//             finish(); -- i think another way: just need this one line to log out
+            // bc it finishes the timeline activity and then goes back to login activity
+            // (bc we went from login activity --> timeline actvity)
+            return true;
         }
         return super.onOptionsItemSelected(item);
     }
@@ -194,19 +208,6 @@ public class TimelineActivity extends AppCompatActivity {
                 Log.e(TAG, "onFailure :( "+ response, throwable);
             }
         });
-    }
-
-    public void onLogoutButton(View view) {
-        // forget who's logged in
-        // navigate backwards to Login screen
-        Intent i = new Intent(this, LoginActivity.class);
-        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); // this makes sure the Back button won't work
-        i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK); // same as above
-        startActivity(i);
-
-        // finish(); -- i think another way: just need this one line to log out
-        // bc it finishes the timeline activity and then goes back to login activity
-        // (bc we went from login activity --> timeline actvity)
     }
 
 }

@@ -1,6 +1,7 @@
 package com.codepath.apps.restclienttemplate;
 
 import android.content.Context;
+import android.content.Intent;
 import android.text.Layout;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -16,6 +17,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.codepath.apps.restclienttemplate.models.Tweet;
+
+import org.parceler.Parcels;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -69,9 +72,8 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
         }
 
 
-
     //define view holder  = inner class -- start here!
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         ImageView ivProfileImage;
         TextView tvBody;
@@ -80,6 +82,8 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
         TextView tvTimestamp;
         TextView tvName;
         TextView tvReplyCount;
+        TextView tvRetweetCount;
+        TextView tvLikeCount;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -91,6 +95,10 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
             ivMedia = itemView.findViewById(R.id.ivMedia);
             tvTimestamp = itemView.findViewById(R.id.tvTimestamp);
             tvReplyCount = itemView.findViewById(R.id.tvReplyCount);
+            tvRetweetCount = itemView.findViewById(R.id.tvRetweetCount);
+            tvLikeCount = itemView.findViewById(R.id.tvLikeCount);
+
+            itemView.setOnClickListener(this);
         }
 
         //creating our own bind method to bind a tweet to view holder
@@ -106,15 +114,18 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
             // if tweet has an image, add it
             if (tweet.mediaImageUrl != "") {
                 ivMedia.setVisibility(View.VISIBLE);
-                Log.i("media", tweet.body  + " media link: " + tweet.mediaImageUrl);
+//                Log.i("media", tweet.body  + " media link: " + tweet.mediaImageUrl);
                 Glide.with(context).load(tweet.mediaImageUrl).transform(new RoundedCorners(70)).into(ivMedia);
             } else {
-                Log.i("media", tweet.body + " media link: NONE");
+//                Log.i("media", tweet.body + " media link: NONE");
                 ivMedia.setVisibility(View.GONE);
             }
 
             tvTimestamp.setText(getRelativeTimeAgo(tweet.createdAt));
             tvReplyCount.setText(""+tweet.retweetCount);
+            tvRetweetCount.setText(""+tweet.retweetCount);
+            tvLikeCount.setText(""+tweet.likeCount);
+
         }
 
         // stretch - adding timestamp
@@ -155,6 +166,19 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
             }
 
             return "";
+        }
+
+        @Override
+        public void onClick(View v) {
+            Log.i("tweet detail click","click" );
+            int position = getAdapterPosition();
+            if (position != RecyclerView.NO_POSITION) { //if position valid, get that tweet
+                Log.i("tweet detail click","position: " + position);
+                Tweet tweet = tweets.get(position);
+                Intent intent = new Intent(context, TweetDetailActivity.class);
+                intent.putExtra("tweet", Parcels.wrap(tweet));
+                context.startActivity(intent);
+            }
         }
     }
 
