@@ -61,7 +61,7 @@ public class TweetDetailActivity extends AppCompatActivity {
         Glide.with(this).load(tweet.user.profileImageUrl).transform(new RoundedCorners(100)).into(ivProfileImage);
 
         // if tweet has an image, add it
-        if (tweet.mediaImageUrl != null) {
+        if (!tweet.mediaImageUrl.equals("")) {
             ivMedia.setVisibility(View.VISIBLE);
             Log.i("media", tweet.body  + " media link: " + tweet.mediaImageUrl);
             Glide.with(this).load(tweet.mediaImageUrl).transform(new RoundedCorners(70)).into(ivMedia);
