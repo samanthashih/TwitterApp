@@ -161,7 +161,7 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
                     return diff / DAY_MILLIS + "d";
                 }
             } catch (ParseException e) {
-                Log.i("timestamp", "getRelativeTimeAgo failed");
+//                Log.i("timestamp", "getRelativeTimeAgo failed");
                 e.printStackTrace();
             }
 
@@ -176,7 +176,7 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
                 Log.i("tweet detail click","position: " + position);
                 Tweet tweet = tweets.get(position);
                 Intent intent = new Intent(context, TweetDetailActivity.class);
-                intent.putExtra("tweet", Parcels.wrap(tweet));
+                intent.putExtra(context.getString(R.string.tweetParcelKey), Parcels.wrap(tweet));
                 context.startActivity(intent);
             }
         }
