@@ -74,4 +74,5 @@ public class TweetDetailActivity extends AppCompatActivity {
         tvRetweetCount.setText(""+tweet.retweetCount);
 
     }
+
 }

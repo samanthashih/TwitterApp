@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.codepath.apps.restclienttemplate.models.Tweet;
@@ -221,6 +222,13 @@ public class TimelineActivity extends AppCompatActivity {
                 Log.e(TAG, "onFailure :( "+ response, throwable);
             }
         });
+    }
+
+    public void replyToTweet(View view) {
+        TextView tvScreenName = view.findViewById(R.id.tvScreenName);
+        Intent i = new Intent(this, ComposeActivity.class);
+        i.putExtra("replyTo", tvScreenName.toString());
+        startActivity(i);
     }
 
 }

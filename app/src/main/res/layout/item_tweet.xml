@@ -93,6 +93,7 @@
         android:layout_toEndOf="@+id/ivProfile"
         android:backgroundTint="#152229"
         android:clickable="true"
+        android:onClick="replyToTweet"
         android:scaleType="fitCenter"
         android:src="@drawable/vector_compose_dm_fab" />
 
