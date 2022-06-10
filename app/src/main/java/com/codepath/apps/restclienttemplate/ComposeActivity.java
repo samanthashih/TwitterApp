@@ -26,6 +26,7 @@ public class ComposeActivity extends AppCompatActivity {
     public static final int MAX_TWEET_LENGTH = 140;
     public static final String TAG = "ComposeActivity";
     TwitterClient client;
+   
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +36,9 @@ public class ComposeActivity extends AppCompatActivity {
         etCompose = findViewById(R.id.etCompose);
         btnTweet = findViewById(R.id.btnTweet);
         client = TwitterApp.getRestClient(this);
+
+                // tried to do reply - did not work :,(
+//        String replyToUser = Parcels.unwrap(intent.getParcelableExtra(this.getString(R.string.tweetParcelKey))); // get data from intent -- get tweet object
 
         // set click listener on button
         btnTweet.setOnClickListener(new View.OnClickListener() {
